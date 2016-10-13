@@ -7,9 +7,24 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include "Trie.h"
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Trie t;
+    string str;
+//    int count = -1;
+    ifstream in("/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/dict_1.txt");
+    
+    while(in >> str)
+    {
+        t.Insert(str);
+    }
+    
+    string test = "test";
+    bool isFind = t.Search(test);
+    t.PrintALL();
     return 0;
 }
