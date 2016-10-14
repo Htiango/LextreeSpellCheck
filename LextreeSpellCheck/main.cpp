@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
     string outFileName = "pureTypos.txt";
     string dictFileName = "dict_1.txt";
     
-    string input = "abbreviation";
+    string input = "abbrev";
     
     vector<string> typos;
     Trie trie;

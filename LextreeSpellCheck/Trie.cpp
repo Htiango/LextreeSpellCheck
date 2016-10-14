@@ -193,24 +193,27 @@ TrieNode* Trie::getRoot()
     return pRoot;
 }
 
-void Trie::swapNodeCost()
+void Trie::swapNodeCost(int minCost)
 {
-    swapNodeCostUtil(pRoot);
+    swapNodeCostUtil(pRoot, minCost);
 }
 
-void Trie::swapNodeCostUtil(TrieNode* node)
+void Trie::swapNodeCostUtil(TrieNode* node, int minCost)
 {
     if (node == NULL)
         return;
     
     int cur = node->getCurNodeCost();
-    node->setPreNodeCost(cur);
-    node->setCurNodeCost(UINT_MAX / 2);
+    if(cur - minCost > BEAM)
+        node->setPreNodeCost(INT_MAX / 2);
+    else
+        node->setPreNodeCost(cur);
+    node->setCurNodeCost(INT_MAX / 2);
     
     for (int i = 0; i < MAX_BRANCH_NUM; i++)
     {
 //        int pre = node->getPreNodeCost();
-        swapNodeCostUtil(node->nextBranch[i]);
+        swapNodeCostUtil(node->nextBranch[i], minCost);
     }
 }
 

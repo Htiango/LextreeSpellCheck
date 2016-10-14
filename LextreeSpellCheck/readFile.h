@@ -11,4 +11,4 @@ using namespace std;
 void convertFile(string filePath, string inFileName, string outFileName);
 void readFile(string filePath, string inFileName, vector<string>& vec);
 
-#endif READ_FILE
+#endif //READ_FILE
