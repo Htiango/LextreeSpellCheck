@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		05C8FEB51DAE5A260026A89A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEB41DAE5A260026A89A /* main.cpp */; };
 		05C8FEBD1DAE5E6D0026A89A /* Trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */; };
+		05C8FEC31DB0C9060026A89A /* LextreeProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEBF1DB0C9060026A89A /* LextreeProcess.cpp */; };
+		05C8FEC41DB0C9060026A89A /* readFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEC11DB0C9060026A89A /* readFile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,11 @@
 		05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trie.cpp; sourceTree = "<group>"; };
 		05C8FEBC1DAE5E6D0026A89A /* Trie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
 		05C8FEBE1DAF2FFC0026A89A /* dict_1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dict_1.txt; sourceTree = "<group>"; };
+		05C8FEBF1DB0C9060026A89A /* LextreeProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LextreeProcess.cpp; sourceTree = "<group>"; };
+		05C8FEC01DB0C9060026A89A /* LextreeProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LextreeProcess.h; sourceTree = "<group>"; };
+		05C8FEC11DB0C9060026A89A /* readFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = readFile.cpp; sourceTree = "<group>"; };
+		05C8FEC21DB0C9060026A89A /* readFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readFile.h; sourceTree = "<group>"; };
+		05C8FEC51DB0C97C0026A89A /* typos.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typos.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +68,25 @@
 		05C8FEB31DAE5A260026A89A /* LextreeSpellCheck */ = {
 			isa = PBXGroup;
 			children = (
-				05C8FEBE1DAF2FFC0026A89A /* dict_1.txt */,
+				05C8FEC61DB0CA360026A89A /* txt */,
+				05C8FEBF1DB0C9060026A89A /* LextreeProcess.cpp */,
+				05C8FEC01DB0C9060026A89A /* LextreeProcess.h */,
+				05C8FEC11DB0C9060026A89A /* readFile.cpp */,
+				05C8FEC21DB0C9060026A89A /* readFile.h */,
 				05C8FEB41DAE5A260026A89A /* main.cpp */,
 				05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */,
 				05C8FEBC1DAE5E6D0026A89A /* Trie.h */,
 			);
 			path = LextreeSpellCheck;
+			sourceTree = "<group>";
+		};
+		05C8FEC61DB0CA360026A89A /* txt */ = {
+			isa = PBXGroup;
+			children = (
+				05C8FEBE1DAF2FFC0026A89A /* dict_1.txt */,
+				05C8FEC51DB0C97C0026A89A /* typos.txt */,
+			);
+			name = txt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C8FEB51DAE5A260026A89A /* main.cpp in Sources */,
+				05C8FEC41DB0C9060026A89A /* readFile.cpp in Sources */,
 				05C8FEBD1DAE5E6D0026A89A /* Trie.cpp in Sources */,
+				05C8FEC31DB0C9060026A89A /* LextreeProcess.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

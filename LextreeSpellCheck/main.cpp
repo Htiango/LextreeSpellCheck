@@ -8,23 +8,30 @@
 
 #include <iostream>
 #include <fstream>
-#include "Trie.h"
+#include "LextreeProcess.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Trie t;
-    string str;
-//    int count = -1;
-    ifstream in("/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/dict_1.txt");
     
-    while(in >> str)
-    {
-        t.Insert(str);
-    }
+    string filePath = "/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/";
+    string inFileName = "typos.txt";
+    string outFileName = "pureTypos.txt";
+    string dictFileName = "dict_1.txt";
     
-    string test = "test";
-    bool isFind = t.Search(test);
-    t.PrintALL();
+    string input = "abbreviation";
+    
+    vector<string> typos;
+    Trie trie;
+    map<string, int> resultSet;
+    
+    //readTestFile(filePath, inFileName, outFileName, typos);
+    createTrie(filePath, dictFileName, trie);
+    beamSearch(resultSet, trie, input);
+    
+    map<string, int>::const_iterator iter = resultSet.begin();
+    for (; iter != resultSet.end(); iter++)
+        cout << iter->first << " " << iter->second << endl;
+    
     return 0;
 }
