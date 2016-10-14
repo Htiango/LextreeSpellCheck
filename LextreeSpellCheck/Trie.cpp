@@ -8,9 +8,58 @@
 
 #include "Trie.h"
 
+bool TrieNode::setPreNodeCost(int val)
+{
+    preNodeCost = val;
+    return true;
+}
+
+int TrieNode::getPreNodeCost()
+{
+    return preNodeCost;
+}
+
+bool TrieNode::setCurNodeCost(int val)
+{
+    curNodeCost = val;
+    return true;
+}
+
+int TrieNode::getCurNodeCost()
+{
+    return curNodeCost;
+}
+
+bool TrieNode::setNodeLetter(char c)
+{
+    letter = c;
+    return true;
+}
+
+char TrieNode::getNodeLetter()
+{
+    return letter;
+}
+
+TrieNode* TrieNode::getParent()
+{
+    return parentBranch;
+}
+
+bool TrieNode::isLeaf()
+{
+    for (int i = 0; i < MAX_BRANCH_NUM; i++)
+    {
+        if (nextBranch[i] != NULL)
+            return false;
+    }
+    return true;
+}
+
 Trie::Trie()
 {
     pRoot = new TrieNode();     // we should pay attention to that the root only store '*'
+    pRoot->setNodeLetter('*');
 }
 
 Trie::~Trie()
@@ -40,6 +89,7 @@ void Trie::Insert(string& str)
         {
             pLoc->nextBranch[index] = new TrieNode;
             pLoc->nextBranch[index]->letter = str[i];
+            pLoc->nextBranch[index]->parentBranch = pLoc;
         }
         pLoc = pLoc->nextBranch[index];
     }
@@ -50,13 +100,13 @@ void Trie::Insert(string& str)
 bool Trie::Search(string& str)
 {
     int stringSize;
-    stringSize = int (str.size());
+    stringSize = int(str.size());
     assert(stringSize != 0);
     int i = 0;
     int index = -1;
     TrieNode* pLoc = pRoot;
     
-    while (pLoc && i < stringSize) {
+    while (i < stringSize) {
         index = (str[i] - 'a') * 2;
         if (index < 0 || index > MAX_BRANCH_NUM - 2) {
             return false;
@@ -67,9 +117,8 @@ bool Trie::Search(string& str)
         }
         
         pLoc = pLoc->nextBranch[index];
-//        if (pLoc->letter != str[i]) {
-//            return  false;
-//        }
+        if (pLoc == NULL)
+            return false;
         i++;
     }
     return true;
@@ -139,5 +188,30 @@ void Trie::Destory(TrieNode* pRoot)
 }
 
 
+TrieNode* Trie::getRoot()
+{
+    return pRoot;
+}
+
+void Trie::swapNodeCost()
+{
+    swapNodeCostUtil(pRoot);
+}
+
+void Trie::swapNodeCostUtil(TrieNode* node)
+{
+    if (node == NULL)
+        return;
+    
+    int cur = node->getCurNodeCost();
+    node->setPreNodeCost(cur);
+    node->setCurNodeCost(UINT_MAX / 2);
+    
+    for (int i = 0; i < MAX_BRANCH_NUM; i++)
+    {
+//        int pre = node->getPreNodeCost();
+        swapNodeCostUtil(node->nextBranch[i]);
+    }
+}
 
 

@@ -27,11 +27,25 @@ class TrieNode
 public:
     char letter;     // one letter of the word that store there
     TrieNode* nextBranch[MAX_BRANCH_NUM];   // the pointers' vectors that point to the next branch
+    TrieNode* parentBranch;
+    int preNodeCost;
+    int curNodeCost;
+
 public:
     TrieNode() : letter(NULL)
     {
         memset(nextBranch,NULL,sizeof(TrieNode*) * MAX_BRANCH_NUM);
+        parentBranch = NULL;
+        preNodeCost = curNodeCost = UINT_MAX / 2;
     }
+    bool setPreNodeCost(int val);
+    int getPreNodeCost();
+    bool setCurNodeCost(int val);
+    int getCurNodeCost();
+    bool setNodeLetter(char c);
+    char getNodeLetter();
+    TrieNode* getParent();
+    bool isLeaf();
 };
 
 
@@ -43,6 +57,9 @@ public:
     void Insert(string& str);   // insert string str
     bool Search(string& str);
     void PrintALL();                // print out all the node in the trie tree
+    TrieNode* getRoot();        //get root node
+    void swapNodeCost();
+    void swapNodeCostUtil(TrieNode* node);
 private:
     TrieNode* pRoot;
 private:
