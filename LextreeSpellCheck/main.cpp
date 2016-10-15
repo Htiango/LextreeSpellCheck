@@ -12,8 +12,8 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-    
+void part1()
+{
     string filePath = "/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/";
     string inFileName = "typos.txt";
     string outFileName = "pureTypos.txt";
@@ -44,15 +44,21 @@ int main(int argc, const char * argv[]) {
                 bestString = bestString.erase(0, 1);
             }
         }
-//        cout << typos[i] << "    " << bestString << endl;
+        //        cout << typos[i] << "    " << bestString << endl;
         out << bestString + ' ';
     }
     out.close();
-//    beamSearch(resultSet, trie, input);
-//    
-//    map<string, int>::const_iterator iter = resultSet.begin();
-//    for (; iter != resultSet.end(); iter++)
-//        cout << iter->first << " " << iter->second << endl;
+    //    beamSearch(resultSet, trie, input);
+    //
+    //    map<string, int>::const_iterator iter = resultSet.begin();
+    //    for (; iter != resultSet.end(); iter++)
+    //        cout << iter->first << " " << iter->second << endl;
+}
+
+
+int main(int argc, const char * argv[]) {
+    
+//    part1();
     
     return 0;
 }

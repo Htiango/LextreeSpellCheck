@@ -56,6 +56,20 @@ bool TrieNode::isLeaf()
     return true;
 }
 
+void TrieNode::setVectorBool(int len)
+{
+    for (int i = 0; i < len; i++) {
+        vectorBool.push_back(0);
+    }
+}
+
+void TrieNode::setVectorNode(int len)
+{
+    for (int i = 0; i < len; i++) {
+        vectorNode.push_back(NULL);
+    }
+}
+
 Trie::Trie()
 {
     pRoot = new TrieNode();     // we should pay attention to that the root only store '*'
@@ -216,5 +230,30 @@ void Trie::swapNodeCostUtil(TrieNode* node, int minCost)
         swapNodeCostUtil(node->nextBranch[i], minCost);
     }
 }
+
+
+void Trie::setNodeVector(int len)
+{
+    setNodeVectorUtil(pRoot, len);
+}
+
+void Trie::setNodeVectorUtil(TrieNode *node, int len)
+{
+    if (node == NULL) {
+        return;
+    }
+    
+    node->setVectorBool(len);
+    node->setVectorNode(len);
+    
+    for (int i = 0; i < MAX_BRANCH_NUM; i++) {
+        setNodeVectorUtil(node->nextBranch[i], len);
+    }
+}
+
+
+
+
+
 
 

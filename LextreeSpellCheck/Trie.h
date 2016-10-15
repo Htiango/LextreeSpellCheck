@@ -15,6 +15,8 @@
 #include <algorithm>
 #include <assert.h>
 #include <sstream>
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -31,6 +33,8 @@ public:
     TrieNode* parentBranch;
     int preNodeCost;
     int curNodeCost;
+    vector<TrieNode*> vectorNode;
+    vector<bool> vectorBool;
 
 public:
     TrieNode() : letter(NULL)
@@ -46,7 +50,9 @@ public:
     bool setNodeLetter(char c);
     char getNodeLetter();
     TrieNode* getParent();
-    bool isLeaf();
+    bool isLeaf();              // return true is it's a leaf
+    void setVectorNode(int len);
+    void setVectorBool(int len);
 };
 
 
@@ -60,9 +66,11 @@ public:
     void PrintALL();                // print out all the node in the trie tree
     TrieNode* getRoot();        //get root node
     void swapNodeCost(int minCost);
-    void swapNodeCostUtil(TrieNode* node, int minCost);
+    void setNodeVector(int len);
 private:
     TrieNode* pRoot;
+    void swapNodeCostUtil(TrieNode* node, int minCost);
+    void setNodeVectorUtil(TrieNode* node, int len);
 private:
     void Destory(TrieNode* pRoot);
     bool Print(TrieNode* pRoot, string& str);
