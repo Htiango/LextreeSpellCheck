@@ -22,7 +22,7 @@ bool createTrie(string filePath, string inFileName, Trie& trie)
 void beamSearch(map<string, int>& resultSet, Trie& trie, string& input)
 {
 	input.insert(0, "*");
-	const int input_len = input.size();
+	const int input_len = int (input.size());
 	TrieNode* node = trie.getRoot();
 	string str = "";     //used to save the template in a map
     
