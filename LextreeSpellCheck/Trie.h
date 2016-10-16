@@ -22,7 +22,7 @@ using namespace std;
 
 #define MAX_BRANCH_NUM  52   // we have 26 characters. double it so that can store the one that ends here
 
-#define BEAM (3)
+#define BEAM (10)
 
 /* define the class for the node of the trie tree*/
 class TrieNode
@@ -35,6 +35,7 @@ public:
     int curNodeCost;
     vector<TrieNode*> vectorNode;
     vector<bool> vectorBool;
+    
 
 public:
     TrieNode() : letter(NULL)
@@ -53,6 +54,7 @@ public:
     bool isLeaf();              // return true is it's a leaf
     void setVectorNode(int len);
     void setVectorBool(int len);
+    string getWord();
 };
 
 

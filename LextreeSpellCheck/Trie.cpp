@@ -70,6 +70,25 @@ void TrieNode::setVectorNode(int len)
     }
 }
 
+string TrieNode::getWord()
+{
+    string str;
+    vector<char> strVec;
+    strVec.push_back(letter);
+    TrieNode* node = getParent();
+    while (node->getParent() != NULL)
+    {
+        strVec.push_back(node->letter);
+        node = node->getParent();
+    }
+    int len = int(strVec.size());
+    for (int i = len - 1; i >= 0; i--) {
+        str += strVec[i];
+    }
+    
+    return str;
+}
+
 Trie::Trie()
 {
     pRoot = new TrieNode();     // we should pay attention to that the root only store '*'

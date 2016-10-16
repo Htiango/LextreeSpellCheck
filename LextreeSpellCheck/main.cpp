@@ -56,9 +56,52 @@ void part1()
 }
 
 
+void part2()
+{
+    string filePath = "/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/";
+    string dictFileName = "dict_1.txt";
+    Trie trie;
+    createTrie(filePath, dictFileName, trie);
+    
+    string input = "butcarlowbut";
+    
+    vector<TrieNode*> minLeafNodeSet;
+    vector<int> minLeafCostSet;
+    beamSearchLoop(trie, input, minLeafNodeSet, minLeafCostSet);
+    int input_len = int(input.size());
+    TrieNode* minNode = minLeafNodeSet[input_len - 1];
+    string word = minNode->getWord();
+    vector<string> vectorTemp;
+    for (int i = input_len - 1; i >= 0; i--)
+    {
+        if (minNode->vectorBool[i])
+        {
+            vectorTemp.push_back(word);
+            minNode = minLeafNodeSet[i - 1];
+            word = minNode->getWord();
+        }
+        else
+        {
+            minNode = minNode->vectorNode[i];
+        }
+    }
+    vector<string> vectorSegWords;
+    vectorSegWords.push_back(word);
+    cout << "* " << word << " * ";
+    int vectorLen = int(vectorTemp.size());
+    for (int i = vectorLen - 1; i >=0; i--) {
+        vectorSegWords.push_back(vectorTemp[i]);
+        cout << vectorTemp[i] << " * ";
+    }
+    cout << endl;
+    cout << "Cost = " << minLeafCostSet[input_len - 1] << endl;
+    
+}
+
+
 int main(int argc, const char * argv[]) {
     
 //    part1();
-    
+    part2();
     return 0;
 }
