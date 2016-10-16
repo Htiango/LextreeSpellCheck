@@ -93,10 +93,7 @@ void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet
     const int input_len = int (input.size());
     TrieNode* node = trie.getRoot();
     trie.setNodeVector(input_len);
-    
-//    vector<TrieNode*> minLeafNodeSet;
-//    vector<int> minLeafCostSet;
-    
+
     TrieNode* minLeafNode;
     int minCost,minLeafCost;
     
@@ -107,14 +104,16 @@ void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet
         
         minCost = INT_MAX / 2;
         
+        char temp = input[i];
+        
         if (i > 0)
         {
-            beamSearchLoopUtil(minLeafNodeSet[i - 1], minLeafCostSet[i - 1], node, input[i], input_len ,i, minCost, minLeafNode, minLeafCost);
+            beamSearchLoopUtil(minLeafNodeSet[i - 1], minLeafCostSet[i - 1], node, temp, input_len ,i, minCost, minLeafNode, minLeafCost);
             trie.swapNodeCost(minCost);
         }
         else
         {
-            beamSearchLoopUtil(NULL, INT_MAX / 2, node, input[i], input_len ,i, minCost, minLeafNode, minLeafCost);
+            beamSearchLoopUtil(NULL, INT_MAX / 2, node, temp, input_len ,i, minCost, minLeafNode, minLeafCost);
         }
         minLeafNodeSet.push_back(minLeafNode);
         minLeafCostSet.push_back(minLeafCost);
@@ -154,6 +153,8 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             {
                 node->curNodeCost = node->preNodeCost + 1;
             }
+            node->vectorNode[pos] = node;
+            node->vectorBool[pos] = false;
         }
         // if it is the first character of the lextree
         else if (node->getParent()->getParent() == NULL)
@@ -329,9 +330,9 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         // if is leaf, update the min leaf cost and the min leaf when fits
         if (node->isLeaf())
         {
-            if (node->preNodeCost < minLeafCost)
+            if (node->curNodeCost < minLeafCost)
             {
-                minLeafCost = node->preNodeCost;
+                minLeafCost = node->curNodeCost;
                 minLeafNode = node;
             }
         }

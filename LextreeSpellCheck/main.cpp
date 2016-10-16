@@ -63,7 +63,7 @@ void part2()
     Trie trie;
     createTrie(filePath, dictFileName, trie);
     
-    string input = "butcarlowbut";
+    string input = "butbutand";
     
     vector<TrieNode*> minLeafNodeSet;
     vector<int> minLeafCostSet;

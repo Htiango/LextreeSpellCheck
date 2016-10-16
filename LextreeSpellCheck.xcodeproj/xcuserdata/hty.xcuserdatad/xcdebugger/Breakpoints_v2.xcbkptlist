@@ -106,7 +106,7 @@
                   moduleName = "LextreeSpellCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hty/Desktop/Speech%20Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/main.cpp"
-                  timestampString = "498292903.138506"
+                  timestampString = "498298859.892102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
@@ -121,7 +121,7 @@
                   moduleName = "LextreeSpellCheck"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hty/Desktop/Speech%20Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/main.cpp"
-                  timestampString = "498292903.140816"
+                  timestampString = "498298859.893962"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/LextreeProcess.cpp"
-            timestampString = "498288276.657351"
+            timestampString = "498298128.203639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "beamSearchLoop(Trie&amp; trie, string&amp; input, vector&lt;TrieNode*&gt;&amp; minLeafNodeSet,vector&lt;int&gt;&amp; minLeafCostSet)"
             landmarkType = "9">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/LextreeProcess.cpp"
-            timestampString = "498288278.67214"
+            timestampString = "498298128.203639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "beamSearchLoop(Trie&amp; trie, string&amp; input, vector&lt;TrieNode*&gt;&amp; minLeafNodeSet,vector&lt;int&gt;&amp; minLeafCostSet)"
             landmarkType = "9">
          </BreakpointContent>
@@ -239,6 +239,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
+            landmarkName = "part2()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LextreeSpellCheck/main.cpp"
+            timestampString = "498297284.420857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "part2()"
             landmarkType = "9">
          </BreakpointContent>
