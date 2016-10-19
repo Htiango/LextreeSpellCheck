@@ -31,10 +31,11 @@ public:
     char letter;     // one letter of the word that store there
     TrieNode* nextBranch[MAX_BRANCH_NUM];   // the pointers' vectors that point to the next branch
     TrieNode* parentBranch;
-    int preNodeCost;
-    int curNodeCost;
+    double preNodeCost;
+    double curNodeCost;
     vector<TrieNode*> vectorNode;
     vector<bool> vectorBool;
+    bool leaf;
     
 
 public:
@@ -43,10 +44,11 @@ public:
         memset(nextBranch,NULL,sizeof(TrieNode*) * MAX_BRANCH_NUM);
         parentBranch = NULL;
         preNodeCost = curNodeCost = INT_MAX / 2;
+        leaf = false;
     }
-    bool setPreNodeCost(int val);
+    bool setPreNodeCost(double val);
     int getPreNodeCost();
-    bool setCurNodeCost(int val);
+    bool setCurNodeCost(double val);
     int getCurNodeCost();
     bool setNodeLetter(char c);
     char getNodeLetter();
@@ -67,11 +69,11 @@ public:
     bool Search(string& str);
     void PrintALL();                // print out all the node in the trie tree
     TrieNode* getRoot();        //get root node
-    void swapNodeCost(int minCost);
+    void swapNodeCost(double minCost);
     void setNodeVector(int len);
 private:
     TrieNode* pRoot;
-    void swapNodeCostUtil(TrieNode* node, int minCost);
+    void swapNodeCostUtil(TrieNode* node, double minCost);
     void setNodeVectorUtil(TrieNode* node, int len);
 private:
     void Destory(TrieNode* pRoot);

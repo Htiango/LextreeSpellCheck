@@ -32,11 +32,11 @@ void part1()
     createTrie(filePath, dictFileName, trie);
     
     for (int i = 0; i < typos.size(); i++) {
-        map<string, int> resultSet;
-        int minCost = INT_MAX / 2;
+        map<string, double> resultSet;
+        double minCost = INT_MAX / 2;
         string bestString;
         beamSearch(resultSet, trie, typos[i]);
-        map<string, int>::const_iterator iter = resultSet.begin();
+        map<string, double>::const_iterator iter = resultSet.begin();
         for (; iter != resultSet.end(); iter++){
             if (iter->second < minCost) {
                 minCost = iter->second;
@@ -63,10 +63,15 @@ void part2()
     Trie trie;
     createTrie(filePath, dictFileName, trie);
     
-    string input = "butbutand";
+    
+    
+    
+//    string input = "onceuponatimewhilebrahmadattawaskingofbenaresthebodhisattacametolifeatthefootofthehimalayasasamonkeyhegrewstrongandsturdybigofframewelltodoandlivedbyacurveoftherivergangesinaforesthauntnowatthattimetherewasacrocodiledwellinginthegangesthecrocodile'smatesawthegreatframeofthemonkeyandsheconceivedalongingtoeathisheartsoshesaidtoherlordsiridesiretoeattheheartofthatgreatkingofthemonkeys";
+    
+    string input = "onseaponatymewilegramadattawskngofbenaresthbohisatakametoliftthefootofhehimlaysasakonkeyhegreostrongeandsturdeebigoffraemwelltodoan'dlivdbyakervveofthreverbangeseinaforresthauntnowatthattymtherewasacrokodylledvelingeinthgngesthekrocodle'smaetesawthegreateframeofthemunkeyandsheconceevedaloangingtoetehshartesoshesedtoherlordseridasyretoeetthehuartofthtgratekingofthemunkees";
     
     vector<TrieNode*> minLeafNodeSet;
-    vector<int> minLeafCostSet;
+    vector<double> minLeafCostSet;
     beamSearchLoop(trie, input, minLeafNodeSet, minLeafCostSet);
     int input_len = int(input.size());
     TrieNode* minNode = minLeafNodeSet[input_len - 1];
@@ -87,11 +92,11 @@ void part2()
     }
     vector<string> vectorSegWords;
     vectorSegWords.push_back(word);
-    cout << "* " << word << " * ";
+    cout << " " << word << " ";
     int vectorLen = int(vectorTemp.size());
     for (int i = vectorLen - 1; i >=0; i--) {
         vectorSegWords.push_back(vectorTemp[i]);
-        cout << vectorTemp[i] << " * ";
+        cout << vectorTemp[i] << " ";
     }
     cout << endl;
     cout << "Cost = " << minLeafCostSet[input_len - 1] << endl;

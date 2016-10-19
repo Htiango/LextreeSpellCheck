@@ -8,7 +8,7 @@
 
 #include "Trie.h"
 
-bool TrieNode::setPreNodeCost(int val)
+bool TrieNode::setPreNodeCost(double val)
 {
     preNodeCost = val;
     return true;
@@ -19,7 +19,7 @@ int TrieNode::getPreNodeCost()
     return preNodeCost;
 }
 
-bool TrieNode::setCurNodeCost(int val)
+bool TrieNode::setCurNodeCost(double val)
 {
     curNodeCost = val;
     return true;
@@ -125,6 +125,10 @@ void Trie::Insert(string& str)
             pLoc->nextBranch[index]->parentBranch = pLoc;
         }
         pLoc = pLoc->nextBranch[index];
+        
+        if (i == stringSize - 1) {
+            pLoc->leaf = true;
+        }
     }
     return;
 }
@@ -226,12 +230,12 @@ TrieNode* Trie::getRoot()
     return pRoot;
 }
 
-void Trie::swapNodeCost(int minCost)
+void Trie::swapNodeCost(double minCost)
 {
     swapNodeCostUtil(pRoot, minCost);
 }
 
-void Trie::swapNodeCostUtil(TrieNode* node, int minCost)
+void Trie::swapNodeCostUtil(TrieNode* node, double minCost)
 {
     if (node == NULL)
         return;
