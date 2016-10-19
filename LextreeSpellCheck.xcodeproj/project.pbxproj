@@ -26,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05485D4A1DB719A9007EE043 /* segmented.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = segmented.txt; sourceTree = "<group>"; };
+		05485D4B1DB719A9007EE043 /* unsegmented.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsegmented.txt; sourceTree = "<group>"; };
+		05485D4C1DB719A9007EE043 /* unsegmented0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsegmented0.txt; sourceTree = "<group>"; };
 		05C8FEB11DAE5A260026A89A /* LextreeSpellCheck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LextreeSpellCheck; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C8FEB41DAE5A260026A89A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trie.cpp; sourceTree = "<group>"; };
@@ -83,6 +86,9 @@
 		05C8FEC61DB0CA360026A89A /* txt */ = {
 			isa = PBXGroup;
 			children = (
+				05485D4A1DB719A9007EE043 /* segmented.txt */,
+				05485D4B1DB719A9007EE043 /* unsegmented.txt */,
+				05485D4C1DB719A9007EE043 /* unsegmented0.txt */,
 				05C8FEBE1DAF2FFC0026A89A /* dict_1.txt */,
 				05C8FEC51DB0C97C0026A89A /* typos.txt */,
 			);
@@ -276,6 +282,7 @@
 				05C8FEBA1DAE5A260026A89A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

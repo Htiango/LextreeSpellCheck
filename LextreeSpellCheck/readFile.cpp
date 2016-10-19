@@ -31,8 +31,8 @@ void readFile(string filePath, string inFileName, vector<string>& vec) {
 	if (!in.is_open())
 		cout << "fail to open story in readFile" << endl;
 	while (!in.eof()) {
-		char c[100];
-		in.getline(c, 100);
+		char c[10000];
+		in.getline(c, 10000);
 		if (c[0] != '\n' && c[0] != ' ' && c[0] != '\0') {
 			string str(c);
 			vec.push_back(str);
