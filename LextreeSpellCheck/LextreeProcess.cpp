@@ -19,14 +19,14 @@ bool createTrie(string filePath, string inFileName, Trie& trie)
 	return true;
 }
 
-void beamSearch(map<string, int>& resultSet, Trie& trie, string& input)
+void beamSearch(map<string, double>& resultSet, Trie& trie, string& input)
 {
 	input.insert(0, "*");
 	const int input_len = int (input.size());
 	TrieNode* node = trie.getRoot();
 	string str = "";     //used to save the template in a map
     
-    int minCost =INT_MAX / 2;
+    double minCost =INT_MAX / 2;
 	for (int i = 0; i < input_len; i++)
 	{
 		if (i > 1)
@@ -36,7 +36,7 @@ void beamSearch(map<string, int>& resultSet, Trie& trie, string& input)
 	}
 }
 
-void beamSearchUtil(map<string, int>& resultSet, TrieNode* node, string& input, string& tempStr, int pos, int& minCost)
+void beamSearchUtil(map<string, double>& resultSet, TrieNode* node, string& input, string& tempStr, int pos, double& minCost)
 {
 	if (node == NULL)
 		return;
@@ -73,10 +73,10 @@ void beamSearchUtil(map<string, int>& resultSet, TrieNode* node, string& input, 
 			tempStr += node->getNodeLetter();
 	}
 
-	if (node->isLeaf() && pos == input.length() - 1)
+	if (node->leaf && pos == input.length() - 1)
 	{
 		//resultSet[tempStr] = node->curNodeCost;
-		resultSet.insert(pair<string, int>(tempStr, node->curNodeCost));
+		resultSet.insert(pair<string, double>(tempStr, node->curNodeCost));
 	}
 
 	for (int i = 0; i < MAX_BRANCH_NUM; i++) {
@@ -87,7 +87,7 @@ void beamSearchUtil(map<string, int>& resultSet, TrieNode* node, string& input, 
 	
 }
 
-void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet,vector<int>& minLeafCostSet)
+void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet,vector<double>& minLeafCostSet)
 {
     input.insert(0, "*");
     const int input_len = int (input.size());
@@ -95,7 +95,7 @@ void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet
     trie.setNodeVector(input_len);
 
     TrieNode* minLeafNode;
-    int minCost,minLeafCost;
+    double minCost,minLeafCost;
     
     for (int i = 0; i < input_len; i++) {
         
@@ -120,7 +120,7 @@ void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet
     }
 }
 
-void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode* node, char input, int input_len, int pos, int& minCost , TrieNode*& minLeafNode, int& minLeafCost)
+void beamSearchLoopUtil(TrieNode* minLeafNodePrev, double minLeafCostPrev,TrieNode* node, char input, int input_len, int pos, double& minCost , TrieNode*& minLeafNode, double& minLeafCost)
 {
     if (node == NULL)
         return;
@@ -131,8 +131,8 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         if (node->getParent() == NULL)
             node->preNodeCost = 0;
         else
-            node->preNodeCost = node->parentBranch->preNodeCost + 1;
-        if (node->isLeaf()) {
+            node->preNodeCost = node->parentBranch->preNodeCost + OTHER_PENALTY;
+        if (node->leaf) {
             if (node->preNodeCost < minLeafCost)
             {
                 minLeafCost = node->preNodeCost;
@@ -151,7 +151,7 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         {
             if (node->preNodeCost != INT_MAX / 2)
             {
-                node->curNodeCost = node->preNodeCost + 1;
+                node->curNodeCost = node->preNodeCost + OTHER_PENALTY;
             }
             node->vectorNode[pos] = node;
             node->vectorBool[pos] = false;
@@ -161,12 +161,12 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         {
             if(node->preNodeCost != INT_MAX / 2 && node->parentBranch->preNodeCost != INT_MAX / 2)
             {
-                int prevCost = node->preNodeCost + 1;
-                int prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : 1);
-                int curParentCost = node->parentBranch->curNodeCost + 1;
-                int prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1);
+                double prevCost = node->preNodeCost + 1;
+                double prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY);
+                double curParentCost = node->parentBranch->curNodeCost + 1;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1) + LOOP_PENALTY;
                 node->curNodeCost = min({prevCost, prevParentCost, curParentCost, prevLeafCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if (cost == prevCost)
                 {
                     node->vectorNode[pos] = node;
@@ -188,11 +188,11 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->preNodeCost != INT_MAX / 2)
             {
-                int prevCost = node->preNodeCost + 1;
-                int curParentCost = node->parentBranch->curNodeCost + 1;
-                int prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1);
+                double prevCost = node->preNodeCost + OTHER_PENALTY;
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY) + LOOP_PENALTY;
                 node->curNodeCost = min({prevCost, curParentCost, prevLeafCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if (cost == prevCost)
                 {
                     node->vectorNode[pos] = node;
@@ -209,11 +209,11 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->parentBranch->preNodeCost != INT_MAX / 2)
             {
-                int prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : 1);
-                int curParentCost = node->parentBranch->curNodeCost + 1;
-                int prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1);
+                double prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY);
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY) + LOOP_PENALTY;
                 node->curNodeCost = min({prevParentCost, curParentCost, prevLeafCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if(cost == prevParentCost){
                     node->vectorNode[pos] = node->getParent();
                     node->vectorBool[pos] = false;
@@ -229,10 +229,10 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->parentBranch->curNodeCost != INT_MAX / 2)
             {
-                int curParentCost = node->parentBranch->curNodeCost + 1;
-                int prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1);
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY) + LOOP_PENALTY;
                 node->curNodeCost = min({curParentCost, prevLeafCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if (cost == curParentCost)
                 {
                     node->vectorNode[pos] = node->getParent()->vectorNode[pos];
@@ -246,7 +246,7 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else
             {
-                int prevLeafCost = minLeafCostPrev;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY) + LOOP_PENALTY;
                 node->curNodeCost = prevLeafCost;
                 node->vectorNode[pos] = minLeafNodePrev;
                 node->vectorBool[pos] = true;
@@ -257,11 +257,11 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         {
             if(node->preNodeCost != INT_MAX / 2 && node->parentBranch->preNodeCost != INT_MAX / 2)
             {
-                int prevCost = node->preNodeCost + 1;
-                int prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : 1);
-                int curParentCost = node->parentBranch->curNodeCost + 1;
+                double prevCost = node->preNodeCost + OTHER_PENALTY;
+                double prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY);
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
                 node->curNodeCost = min({prevCost, prevParentCost, curParentCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if (cost == prevCost)
                 {
                     node->vectorNode[pos] = node;
@@ -280,10 +280,10 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->preNodeCost != INT_MAX / 2)
             {
-                int prevCost = node->preNodeCost + 1;
-                int curParentCost = node->parentBranch->curNodeCost + 1;
+                double prevCost = node->preNodeCost + OTHER_PENALTY;
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
                 node->curNodeCost = min({prevCost, curParentCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if (cost == prevCost)
                 {
                     node->vectorNode[pos] = node;
@@ -297,10 +297,10 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->parentBranch->preNodeCost != INT_MAX / 2)
             {
-                int prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : 1);
-                int curParentCost = node->parentBranch->curNodeCost + 1;
+                double prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY);
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
                 node->curNodeCost = min({prevParentCost, curParentCost});
-                int cost = node->curNodeCost;
+                double cost = node->curNodeCost;
                 if(cost == prevParentCost)
                 {
                     node->vectorNode[pos] = node->getParent();
@@ -314,7 +314,7 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
             }
             else if(node->parentBranch->curNodeCost != INT_MAX / 2)
             {
-                int curParentCost = node->parentBranch->curNodeCost + 1;
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
                 node->curNodeCost = curParentCost;
                 node->vectorNode[pos] = node->getParent()->vectorNode[pos];
                 node->vectorBool[pos] = node->getParent()->vectorBool[pos];
@@ -328,7 +328,7 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode*
         }
         
         // if is leaf, update the min leaf cost and the min leaf when fits
-        if (node->isLeaf())
+        if (node->leaf)
         {
             if (node->curNodeCost < minLeafCost)
             {

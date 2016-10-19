@@ -5,12 +5,13 @@
 #include "Trie.h"
 #include "readFile.h"
 
-
+#define LOOP_PENALTY  1
+#define OTHER_PENALTY 1
 
 bool readTestFile(string filePath, string inFileName, string outFileName, vector<string>& vec);
 bool createTrie(string filePath, string inFileName, Trie& trie);
-void beamSearch(map<string, int>& resultSet, Trie& trie, string& input);
-void beamSearchUtil(map<string, int>& resultSet, TrieNode* node, string& input, string& tempStr, int pos, int& minCost);
-void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet,vector<int>& minLeafCostSet);
-void beamSearchLoopUtil(TrieNode* minLeafNodePrev, int minLeafCostPrev,TrieNode* node, char input, int input_len, int pos, int& minCost , TrieNode*& minLeafNode, int& minLeafCost);
+void beamSearch(map<string, double>& resultSet, Trie& trie, string& input);
+void beamSearchUtil(map<string, double>& resultSet, TrieNode* node, string& input, string& tempStr, int pos, double& minCost);
+void beamSearchLoop(Trie& trie, string& input, vector<TrieNode*>& minLeafNodeSet,vector<double>& minLeafCostSet);
+void beamSearchLoopUtil(TrieNode* minLeafNodePrev, double minLeafCostPrev,TrieNode* node, char input, int input_len, int pos, double& minCost , TrieNode*& minLeafNode, double& minLeafCost);
 #endif //LEXTREE_PROCESS
