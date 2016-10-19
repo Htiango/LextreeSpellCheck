@@ -161,10 +161,10 @@ void beamSearchLoopUtil(TrieNode* minLeafNodePrev, double minLeafCostPrev,TrieNo
         {
             if(node->preNodeCost != INT_MAX / 2 && node->parentBranch->preNodeCost != INT_MAX / 2)
             {
-                double prevCost = node->preNodeCost + 1;
+                double prevCost = node->preNodeCost + OTHER_PENALTY;
                 double prevParentCost = node->parentBranch->preNodeCost + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY);
-                double curParentCost = node->parentBranch->curNodeCost + 1;
-                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : 1) + LOOP_PENALTY;
+                double curParentCost = node->parentBranch->curNodeCost + OTHER_PENALTY;
+                double prevLeafCost = minLeafCostPrev + (input == node->getNodeLetter() ? 0 : OTHER_PENALTY) + LOOP_PENALTY;
                 node->curNodeCost = min({prevCost, prevParentCost, curParentCost, prevLeafCost});
                 double cost = node->curNodeCost;
                 if (cost == prevCost)

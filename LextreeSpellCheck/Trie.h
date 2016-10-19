@@ -20,9 +20,9 @@
 
 using namespace std;
 
-#define MAX_BRANCH_NUM  52   // we have 26 characters. double it so that can store the one that ends here
+#define MAX_BRANCH_NUM  53   // we have 26 characters. double it so that can store the one that ends here
 
-#define BEAM (10)
+#define BEAM (15)
 
 /* define the class for the node of the trie tree*/
 class TrieNode

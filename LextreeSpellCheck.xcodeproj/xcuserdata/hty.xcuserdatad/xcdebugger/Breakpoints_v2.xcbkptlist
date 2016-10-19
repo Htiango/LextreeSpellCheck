@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/Trie.cpp"
-            timestampString = "498305356.668948"
+            timestampString = "498543344.258157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "Trie::Print(TrieNode* pRoot, string&amp; str)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498281010.668648"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "part2()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "part2(string seg1FileName)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,76 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498281018.10504"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "part1()"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498539649.846335"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "part2()"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "part2()"
-                  moduleName = "LextreeSpellCheck"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hty/Desktop/Speech%20Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/main.cpp"
-                  timestampString = "498539852.035338"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "4065">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "part2()"
-                  moduleName = "LextreeSpellCheck"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hty/Desktop/Speech%20Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/main.cpp"
-                  timestampString = "498539852.038207"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "4293">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "part2()"
-                  moduleName = "LextreeSpellCheck"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hty/Desktop/Speech%20Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/main.cpp"
-                  timestampString = "498539852.040604"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "4313">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498539649.846335"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "part2()"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "part2(string seg1FileName)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498539260.877571"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "part2()"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "part2(string seg1FileName)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498539312.985482"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "part2()"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "part2(string seg1FileName)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,12 +170,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LextreeSpellCheck/main.cpp"
-            timestampString = "498539318.850865"
+            timestampString = "498570391.345562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "part2()"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "part2(string seg1FileName)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LextreeSpellCheck/main.cpp"
+            timestampString = "498550643.323851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "part1()"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

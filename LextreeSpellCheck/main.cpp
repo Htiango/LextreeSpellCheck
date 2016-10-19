@@ -8,7 +8,9 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 #include "LextreeProcess.h"
+#include "printPath.h"
 
 using namespace std;
 
@@ -46,6 +48,7 @@ void part1()
         }
         //        cout << typos[i] << "    " << bestString << endl;
         out << bestString + ' ';
+        cout << bestString << " ";
     }
     out.close();
     //    beamSearch(resultSet, trie, input);
@@ -56,21 +59,22 @@ void part1()
 }
 
 
-void part2()
+void part2(string seg1FileName)
 {
     string filePath = "/Users/hty/Desktop/Speech Recognition/project/project5/LextreeSpellCheck/LextreeSpellCheck/";
-    string seg1FileName = "unsegmented0.txt";
+    
     string dictFileName = "dict_1.txt";
+    string correctSegFileName = "segmented.txt";
     Trie trie;
     createTrie(filePath, dictFileName, trie);
     
     vector<string> unSeg1, unseg2;  // 1 for the wrong one, 2 for the correct one.
     readFile(filePath, seg1FileName, unSeg1);
     
+    vector<string> correctWords;
+    vector<string> segWords;
     
-//    string input = "onceuponatimewhilebrahmadattawaskingofbenaresthebodhisattacametolifeatthefootofthehimalayasasamonkeyhegrewstrongandsturdybigofframewelltodoandlivedbyacurveoftherivergangesinaforesthauntnowatthattimetherewasacrocodiledwellinginthegangesthecrocodile'smatesawthegreatframeofthemonkeyandsheconceivedalongingtoeathisheartsoshesaidtoherlordsiridesiretoeattheheartofthatgreatkingofthemonkeys";
-    
-//    string input = "onseaponatymewilegramadattawskngofbenaresthbohisatakametoliftthefootofhehimlaysasakonkeyhegreostrongeandsturdeebigoffraemwelltodoan'dlivdbyakervveofthreverbangeseinaforresthauntnowatthattymtherewasacrokodylledvelingeinthgngesthekrocodle'smaetesawthegreateframeofthemunkeyandsheconceevedaloangingtoetehshartesoshesedtoherlordseridasyretoeetthehuartofthtgratekingofthemunkees";
+    readFile(filePath, correctSegFileName, correctWords);
     
     for(int i = 0; i < unSeg1.size(); i++){
     
@@ -96,22 +100,57 @@ void part2()
         }
         vector<string> vectorSegWords;
         vectorSegWords.push_back(word);
-        cout << " " << word << " ";
+        cout << word << " ";
+        segWords.push_back(word);
         int vectorLen = int(vectorTemp.size());
         for (int i = vectorLen - 1; i >=0; i--) {
             vectorSegWords.push_back(vectorTemp[i]);
             cout << vectorTemp[i] << " ";
+            segWords.push_back(vectorTemp[i]);
         }
         cout << endl;
-        cout << "Cost = " << minLeafCostSet[input_len - 1] << endl;
+//        cout << "Cost = " << minLeafCostSet[input_len - 1] << endl;
     }
     
+    ofstream out(filePath + "path.txt");
+    int errorRecord[4] = {0, 0, 0, 0};
+    
+    printString(segWords, correctWords, out, errorRecord);
+    cout << endl;
+    cout << "Words' number: "<< segWords.size() <<endl;
+    cout << "Template words' number: "<< correctWords.size() <<endl;
+    cout << "Correct: "<< errorRecord[3] <<  endl;
+    cout << "Substitution: " <<errorRecord[0] <<endl;
+    cout << "Insertion: " << errorRecord[1] << endl;
+    cout << "Deletion: " << errorRecord[2] << endl;
+    int accuracy;
+    int difference = int (segWords.size() - correctWords.size());
+    accuracy = abs(difference)  + errorRecord[0];
+    cout << "Accuracy = " << accuracy << endl;
 }
 
 
+
 int main(int argc, const char * argv[]) {
-    
-//    part1();
-    part2();
+    cout << "----------------------------------------PROBLEM 1--------------------------------------------------------------------------"<< endl;
+    cout << endl;
+
+    part1();
+    cout << endl;
+    cout << endl;
+    cout << "----------------------------------------PROBLEM 2---------------------------------------------------------------------------"<< endl;
+    cout << endl;
+    cout << endl;
+    cout << "****************************************CORRECT ONE****************************************"<< endl;
+    cout << endl;
+    string seg1FileName = "unsegmented0.txt";
+    part2(seg1FileName);
+    cout << endl;
+    cout << endl;
+    cout << "****************************************WRONG ONE****************************************"<< endl;
+    cout << endl;
+    string seg2FileName = "unsegmented.txt";
+    part2(seg2FileName);
+
     return 0;
 }

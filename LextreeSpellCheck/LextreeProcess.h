@@ -5,8 +5,8 @@
 #include "Trie.h"
 #include "readFile.h"
 
-#define LOOP_PENALTY  4
-#define OTHER_PENALTY 5
+#define LOOP_PENALTY  1
+#define OTHER_PENALTY 2
 
 bool readTestFile(string filePath, string inFileName, string outFileName, vector<string>& vec);
 bool createTrie(string filePath, string inFileName, Trie& trie);

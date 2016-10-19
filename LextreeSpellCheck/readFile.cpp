@@ -28,15 +28,11 @@ void convertFile(string filePath, string inFileName, string outFileName) {
 
 void readFile(string filePath, string inFileName, vector<string>& vec) {
 	ifstream in(filePath + inFileName);
+    string str;
 	if (!in.is_open())
 		cout << "fail to open story in readFile" << endl;
-	while (!in.eof()) {
-		char c[10000];
-		in.getline(c, 10000);
-		if (c[0] != '\n' && c[0] != ' ' && c[0] != '\0') {
-			string str(c);
-			vec.push_back(str);
-		}
+	while (in >> str) {
+        vec.push_back(str);
 	}
 	in.close();
 }

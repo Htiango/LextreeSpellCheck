@@ -109,8 +109,13 @@ void Trie::Insert(string& str)
     TrieNode* pLoc = pRoot;
     
     for (int i = 0; i < stringSize; i++) {
-        index = (str[i] - 'a') * 2;
-        if (index < 0 || index > MAX_BRANCH_NUM - 2) {
+        if(str[i] == 39){
+            index = MAX_BRANCH_NUM - 1;
+        }
+        else{
+            index = (str[i] - 'a') * 2;
+        }
+        if (index < 0 || index > MAX_BRANCH_NUM - 1) {
             return;
         }
         if (i == stringSize - 1)                // check if it is the last character. if so, add one to the index
@@ -144,8 +149,13 @@ bool Trie::Search(string& str)
     TrieNode* pLoc = pRoot;
     
     while (i < stringSize) {
-        index = (str[i] - 'a') * 2;
-        if (index < 0 || index > MAX_BRANCH_NUM - 2) {
+        if(str[i] == 39){
+            index = MAX_BRANCH_NUM - 1;
+        }
+        else{
+            index = (str[i] - 'a') * 2;
+        }
+        if (index < 0 || index > MAX_BRANCH_NUM - 1) {
             return false;
         }
         if (i == stringSize - 1)                // check if it is the last character. if so, add one to the index

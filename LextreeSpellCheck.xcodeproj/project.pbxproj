@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05485D4F1DB73667007EE043 /* printPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05485D4D1DB73667007EE043 /* printPath.cpp */; };
 		05C8FEB51DAE5A260026A89A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEB41DAE5A260026A89A /* main.cpp */; };
 		05C8FEBD1DAE5E6D0026A89A /* Trie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */; };
 		05C8FEC31DB0C9060026A89A /* LextreeProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05C8FEBF1DB0C9060026A89A /* LextreeProcess.cpp */; };
@@ -29,6 +30,8 @@
 		05485D4A1DB719A9007EE043 /* segmented.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = segmented.txt; sourceTree = "<group>"; };
 		05485D4B1DB719A9007EE043 /* unsegmented.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsegmented.txt; sourceTree = "<group>"; };
 		05485D4C1DB719A9007EE043 /* unsegmented0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unsegmented0.txt; sourceTree = "<group>"; };
+		05485D4D1DB73667007EE043 /* printPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = printPath.cpp; sourceTree = "<group>"; };
+		05485D4E1DB73667007EE043 /* printPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printPath.h; sourceTree = "<group>"; };
 		05C8FEB11DAE5A260026A89A /* LextreeSpellCheck */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LextreeSpellCheck; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C8FEB41DAE5A260026A89A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trie.cpp; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				05C8FEB41DAE5A260026A89A /* main.cpp */,
 				05C8FEBB1DAE5E6D0026A89A /* Trie.cpp */,
 				05C8FEBC1DAE5E6D0026A89A /* Trie.h */,
+				05485D4D1DB73667007EE043 /* printPath.cpp */,
+				05485D4E1DB73667007EE043 /* printPath.h */,
 			);
 			path = LextreeSpellCheck;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				05C8FEC41DB0C9060026A89A /* readFile.cpp in Sources */,
 				05C8FEBD1DAE5E6D0026A89A /* Trie.cpp in Sources */,
 				05C8FEC31DB0C9060026A89A /* LextreeProcess.cpp in Sources */,
+				05485D4F1DB73667007EE043 /* printPath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
